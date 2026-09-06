@@ -1,0 +1,75 @@
+plugins {
+    id "com.android.application"
+    id "kotlin-android"
+    // The Flutter Gradle Plugin must be applied after the Android and Kotlin plugins.
+    id "dev.flutter.flutter-gradle-plugin"
+}
+
+def localProperties = new Properties()
+def localPropertiesFile = rootProject.file("local.properties")
+if (localPropertiesFile.exists()) {
+    localPropertiesFile.withReader("UTF-8") { reader ->
+        localProperties.load(reader)
+    }
+}
+
+def flutterVersionCode = localProperties.getProperty("flutter.versionCode")
+if (flutterVersionCode == null) {
+    flutterVersionCode = "1"
+}
+
+def flutterVersionName = localProperties.getProperty("flutter.versionName")
+if (flutterVersionName == null) {
+    flutterVersionName = "1.0.0"
+}
+
+android {
+    namespace = "com.sumpay.app"
+    compileSdk = flutter.compileSdkVersion
+    ndkVersion = flutter.ndkVersion
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+
+    defaultConfig {
+        applicationId = "com.sumpay.app"
+        minSdk = 21
+        targetSdk = flutter.targetSdkVersion
+        versionCode = flutterVersionCode.toInteger()
+        versionName = flutterVersionName
+    }
+
+    buildTypes {
+        release {
+            // Signed with the debug keys for now so `flutter run --release`
+            // works out of the box. Replace with a real keystore before
+            // publishing.
+            signingConfig = signingConfigs.debug
+            minifyEnabled = false
+            shrinkResources = false
+        }
+    }
+}
+
+flutter {
+    source = "../.."
+}
+
+// Pin transitive AndroidX dependencies (pulled in by supabase_flutter) to the
+// last versions compatible with the project's current Android Gradle Plugin
+// (8.6.0). Newer versions (androidx.core 1.17.0, androidx.browser 1.9.0)
+// require AGP 8.9.1+. This keeps the existing toolchain unchanged. When the AGP
+// is later upgraded to 8.9.1+, these forces can be removed.
+configurations.all {
+    resolutionStrategy {
+        force "androidx.core:core:1.16.0"
+        force "androidx.core:core-ktx:1.16.0"
+        force "androidx.browser:browser:1.8.0"
+    }
+}

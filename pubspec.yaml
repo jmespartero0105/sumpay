@@ -1,0 +1,63 @@
+name: sumpay
+description: SUMPAY - Smart Unified Mesh Platform for Area Yielding-Response. Offline-first mobile-to-IoT emergency communication system.
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.6.0 <4.0.0'
+  flutter: ">=3.27.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # State management
+  flutter_riverpod: ^2.6.1
+
+  # Navigation
+  go_router: ^14.6.2
+
+  # Responsive
+  responsive_framework: ^1.5.1
+
+  # Typography & icons
+  google_fonts: ^6.2.1
+  material_symbols_icons: ^4.2801.1
+
+  # Motion
+  animations: ^2.0.11
+  lottie: ^3.3.1
+
+  # Local persistence (SQLite)
+  sqflite: ^2.4.1
+  path: ^1.9.0
+
+  # Nearby device discovery (Phase 2 — no messaging yet)
+  nearby_connections: ^4.3.0
+  permission_handler: ^11.3.1
+  geolocator: ^13.0.2
+
+  # Internet transport (Supabase Realtime backend) + connectivity detection
+  supabase_flutter: ^2.8.0
+  connectivity_plus: ^6.1.0
+
+  # OpenStreetMap tracking map (no API key, vendor-free, cacheable tiles)
+  flutter_map: ^7.0.2
+  latlong2: ^0.9.1
+
+  # Utilities
+  intl: ^0.19.0
+  crypto: ^3.0.6
+  # Cross-platform HTTP (works on web + mobile) for reverse geocoding.
+  http: ^1.2.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/lottie/
+    - assets/images/
