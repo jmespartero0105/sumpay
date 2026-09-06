@@ -13,13 +13,13 @@ class SupabaseConfig {
   /// Your project URL, e.g. https://abcdefgh.supabase.co
   static const String url = String.fromEnvironment(
     'SUPABASE_URL',
-    defaultValue: 'https://rwsspvkcsilvmdgttdhk.supabase.co',
+    defaultValue: '',
   );
 
   /// Your project's anon/public key.
   static const String anonKey = String.fromEnvironment(
     'SUPABASE_ANON_KEY',
-    defaultValue: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJ3c3Nwdmtjc2lsdm1kZ3R0ZGhrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODY5NDgzMTIsImV4cCI6MjEwMjUyNDMxMn0.RVBoUZL97B0kLUBboB9L3OQQ02hWEs9hjuxbhXomIJ4',
+    defaultValue: '',
   );
 
   /// Whether valid-looking config is present.
